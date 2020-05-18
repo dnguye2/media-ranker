@@ -7,6 +7,12 @@ class WorksController < ApplicationController
   end
 
   def show
+    work_id = params[:id]
+    @work = Work.find_by(id: book_id)
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def new
