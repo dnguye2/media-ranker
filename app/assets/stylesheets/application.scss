@@ -16,3 +16,39 @@
 @import "bootstrap";
 
 @import "**/*";
+
+
+
+// Navbar
+.navbar-custom {
+  text-transform: uppercase;
+  background-color: #fffcef;
+  color: #d5cba1;
+}
+
+.navbar-custom a {
+  color: #d5cba1;
+}
+
+.navbar-custom a:hover {
+  color: #837d62;
+}
+
+// Footer
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding-top: 20px;
+  width: 100%;
+  height: 100px; /* Set the fixed height of the footer here */
+  line-height: 20px; /* Vertically center the text there */
+  background-color: #fffcef;
+  color: #d5cba1;
+  text-transform: uppercase;
+  font-size: 3px;
+}
+
+.footer a {
+  color: #d5cba1;
+  text-decoration: underline;
+}
