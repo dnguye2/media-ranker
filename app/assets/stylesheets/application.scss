@@ -18,7 +18,7 @@
 @import "**/*";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;800&display=swap');
 
 // For all content
 body {
@@ -35,9 +35,49 @@ body {
   color:  #837d62;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: 'Exo 2', sans-serif;
   text-transform: uppercase;
+  font-weight: 800;
+}
+
+h4 {
+  font-family: 'Exo 2', sans-serif;
+}
+
+h6 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 300;
+}
+
+.top-ten__header {
+  border-bottom: 2px solid;
+  border-bottom-color: currentcolor;
+}
+
+.album, .album a{
+  color: rgb(240, 78, 62);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.book, .book a {
+  color: rgb(252, 202, 100);
+  font-weight: 800;
+}
+
+.movie, .movie a {
+  color: rgb(67, 173, 165);
+  font-weight: 800;
+}
+
+.list-group-item {
+  background: #fffcef;
+}
+
+a:hover {
+  color:  #837d62;
+  text-decoration: none;
 }
 
 // Header
@@ -89,9 +129,22 @@ h1, h2, h3, h4 {
 }
 
 // Table
-
 .table-custom {
   color:  #837d62;
+}
+
+// Homepage
+
+/* Spotlight */
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+/* Top Ten */
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
 }
 
 // Footer
