@@ -37,15 +37,13 @@
           <li class="nav-item nav-link"> / </li>
           <%= link_to "view all media", works_path, :class => "nav-item nav-link"%>
           <li class="nav-item nav-link"> / </li>
-          <%= link_to "add a new work", root_path, :class => "nav-item nav-link"%>
+          <%= link_to "add a new work", new_work_path, :class => "nav-item nav-link"%>
           <li class="nav-item nav-link"> / </li>
           <%= link_to "view all users", root_path, :class => "nav-item nav-link"%>
         </div>
       </div>
     </nav>
 
-      <br>
-    
     <%# Content %>
     <div class="container-fluid p-5">
       <%= yield %>
