@@ -16,21 +16,9 @@ class Work < ApplicationRecord
     end
   end
 
-  def self.top_ten_albums
+  def self.top_ten(category)
     work = Work.all
-    albums = work.where(category: "album")
-    top_ten_albums = albums.sample(10)
-  end
-
-  def self.top_ten_books
-    work = Work.all
-    books = work.where(category: "book")
-    top_ten_books = books.sample(10)
-  end
-
-  def self.top_ten_movies
-    work = Work.all
-    movies = work.where(category: "movie")
-    top_ten_movies = movies.sample(10)
+    category_collection = work.where(category: category)
+    top_ten = category_collection.sample(10)
   end
 end
