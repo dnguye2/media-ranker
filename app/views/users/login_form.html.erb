@@ -1,6 +1,22 @@
-<%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
-  <%= f.label :username, class: "hidden" %>
-  <%= f.text_field :username, placeholder: "Username" %>
+<h1 class="text-center"> Log In </h1>
+<p class="text-center">Please provide your username to login:</p>
+<div class="d-flex flex-column">
+  <div id="page-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
+            <div class = "form-group">
+            <%= f.label :username, class: "hidden" %>
+            <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+            </div>
 
-  <%= f.submit "Log In", class: "btn btn-outline-dark" %>
-<% end %>
+            <div class = "form-group">
+            <%= f.submit "Log In", class: "btn btn-outline-dark" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
