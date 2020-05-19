@@ -53,6 +53,17 @@
     <%# Content %>
     <section class="content">
       <div class="container-fluid p-5">
+
+        <section class="flash-msg__section">
+          <% flash.each do |name, message| %>
+          <ul class="alert alert-success light-text" role="alert">
+              <strong class="<%= name %>">
+                <%= message %>
+              </strong>
+          </ul>
+          <% end %>
+        </section>
+
         <%= yield %>
       </div>
     </section>
