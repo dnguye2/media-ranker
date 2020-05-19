@@ -83,3 +83,7 @@
     <h3>No works in the system!</h3>
   <% end %>
  
+ <section>
+  <%= button_to "View Top Media", root_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;'}%>
+  <%= button_to "Add a New Work", new_work_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;' }%>
+</section>
