@@ -10,7 +10,12 @@
                   <div class="card-body">
                     <h5 class="card-title">Created by <%= @work.creator %> </h5>
                     <p class="card-text"><%= @work.description %></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <section>
+                      <%= button_to "Back to media ranks", root_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;'}%>
+                      <%= button_to "Edit", edit_work_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;' }%>
+                      <%= button_to "Upvote DNE", root_path, method: :get, :class => "btn btn-outline-dark", form: {style: 'display:inline-block;' }%>
+                      <%= button_to "Delete DNE", work_path(@work), method: :delete, :class => "btn btn-danger",  data: {confirm: "Are you sure you want to delete this work?"}, form: {style: 'display:inline-block;' }%>
+                    </section>
                   </div>
                 </div>
             </div>
