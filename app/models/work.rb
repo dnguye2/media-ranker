@@ -1,7 +1,13 @@
 class Work < ApplicationRecord
 
-  # validations
+  # Validations
+  validates :title, presence: true
+  validates :category, presence: true
+  validates :creator, presence: true
+  validates :publication_year, presence: true
+  validates :description, presence: true
 
+  # Methods
   def self.spotlight
     work = Work.all
     
