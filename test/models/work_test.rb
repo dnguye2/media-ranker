@@ -92,6 +92,20 @@ describe Work do
         expect(work).must_respond_to field
       end
     end
+
+    it "returns nil if there are no works" do
+      works = Work.all
+
+      # Make local Work database empty
+      works.each do |work|
+        work.destroy
+      end
+
+      work_spotlight = Work.spotlight()
+      
+      expect(work_spotlight).must_equal nil
+
+    end
   end
 
   # Top Ten
@@ -106,8 +120,15 @@ describe Work do
     end
 
     it "will return nil if there are no works" do
-      book_list = Work.top_ten("book")
-      expect(book_list).must_equal nil
+      works = Work.all
+
+      # Make local Work database empty
+      works.each do |work|
+        work.destroy
+      end
+
+      album_list = Work.top_ten("album")
+      expect(album_list).must_equal nil
     end
 
     it "will return the same amount of items as the amount of works if the total amount of works is less than 10" do
