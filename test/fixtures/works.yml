@@ -1,0 +1,76 @@
+# Albums
+banks:
+  title: "The Altar" 
+  creator: "BANKS"
+  category: "album"
+  publication_year: "2016"
+  description: "The alt R&B singer-songwriter coaxes universal emotion from her life on an adventurous sophomore album."
+tame_impala:
+  title: "The Slow Rush"
+  creator: "Tame Impala"
+  category: "album"
+  publication_year: "2020"
+  description: "On his fourth album, Kevin Parker takes a breath and eases into a smoother psychedelic sound. Even without the adrenaline-filled highs, the compositions are as rich and thoughtful as ever."
+mahalia: 
+  title: "Love and Compromise"
+  creator: "Mahalia"
+  category: "album"
+  publication_year: "2019"
+  description: "‘Love and Compromise’ is a gorgeous triumph. It’s a stellar debut album filled with intelligently written songs. Throughout it’s permeated with Mahalia’s gorgeous honeyed vocals and brilliantly honest lyrics."
+the_strokes:
+  title: "The New Abnormal"
+  creator: "The Strokes"
+  category: "album"
+  publication_year: "2020"
+  description: "The New Abnormal is the sixth studio album by American rock band the Strokes, released on April 10, 2020, through Cult and RCA Records. It was their first album in seven years, following Comedown Machine, and their first release since the Future Present Past EP."
+lemaitre:
+  title: "Chapter One"
+  creator: "Lemaitre"
+  category: "album"
+  publication_year: "2017"
+  description: "Chapter One is a retrospective album from Norwegian-born, Los Angeles-based electronic duo Lemaitre (Ketil Jansen and Ulrik Denizou Lund) that captures the scope of their vision and depth of their artistry. The 13-track collection includes many of the duo's hit singles."
+lianne_la_havas:
+  title: "Blood"
+  creator: "Lianna La Havas"
+  category: "album"
+  publication_year: "2015"
+  description: "Blood is the second studio album by English singer Lianne La Havas. Havas cited the album as a homage towards her Jamaican and Greek bloodline which in turn inspired the album's title."
+leon:
+  title: "Leon"
+  creator: "Leon"
+  category: "album"
+  publication_year: "2019"
+  description: "Her first studio album, titled LÉON, which garnered praise with songs such as 'You And I' and 'Falling'."
+ariana_grande:
+  title: "thank u, next"
+  creator: "Ariana Grande"
+  category: "album"
+  publication_year: "2019"
+  description: "thank u, next, Grande's fifth studio album, is a pop, R&B and trap album with many influences of hip hop on its beats and productions. It explores a diversity of other music genres, including dancehall, soul, pop-rap and many urban influences."
+foster_the_people:
+  title: "Torches"
+  creator: "Foster the People"
+  category: "album"
+  publication_year: "2011"
+  description: "The L.A. trio's debut album which is catchy, electro-lite dance-pop that fits nicely next to such contemporaries as MGMT and Phoenix."
+  
+# Movies
+sharrock: 
+  title: "Me Before You,Thea Sharrock"
+  creator: "Thea Sharrock"
+  category: "movie"
+  publication_year: "2016"
+  description: "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of."
+finest: 
+  title: "Their Finest"
+  creator: "Lone Scherfig"
+  category: "movie"
+  publication_year: "2016"
+  description: "A former secretary, newly appointed as a scriptwriter for propaganda films, joins the cast and crew of a major production while the Blitz rages around them."
+batman:
+  title: "The Dark Knight"
+  creator: "Christopher Nolan"
+  category: "movie"
+  publication_year: "2008"
+  description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the Dark Knight must come to terms with one of the greatest psychological tests of his ability to fight injustice."
+
