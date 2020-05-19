@@ -10,13 +10,11 @@ class Work < ApplicationRecord
   # Methods
   def self.spotlight
     work = Work.all
-    
-    random_work_id = rand(1..(work.last.id))
 
-    spotlight_media = work.find(random_work_id)
+    spotlight_media = work.sample(1)
 
-    if spotlight_media
-      return spotlight_media
+    if !spotlight_media.nil?
+      return spotlight_media[0]
     else
       return nil
     end
