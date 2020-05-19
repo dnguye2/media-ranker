@@ -24,5 +24,11 @@ class Work < ApplicationRecord
     work = Work.all
     category_collection = work.where(category: category)
     top_ten = category_collection.sample(10)
+
+    if top_ten.empty?
+      return nil
+    else
+      return top_ten
+    end
   end
 end
