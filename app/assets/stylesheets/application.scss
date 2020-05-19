@@ -58,18 +58,18 @@ h6 {
 }
 
 .album, .album a{
-  color: rgb(240, 78, 62);
+  color: #F04E3E;
   text-decoration: none;
   font-weight: 800;
 }
 
 .book, .book a {
-  color: rgb(252, 202, 100);
+  color: #FCCA64;
   font-weight: 800;
 }
 
 .movie, .movie a {
-  color: rgb(67, 173, 165);
+  color: #43ADA5;
   font-weight: 800;
 }
 
@@ -100,6 +100,13 @@ a:hover {
 .header-custom a:hover {
   color:  #837d62;
   text-decoration: none;
+}
+
+.header-logo__gradient{
+  font-size: 50px;
+  background: linear-gradient(90deg, rgba(240,78,62,1) 27%, rgba(252,202,100,1) 68%, rgba(67,173,165,1) 79%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 // Navbar
@@ -133,6 +140,10 @@ a:hover {
 // Table
 .table-custom {
   color:  #837d62;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #fff5c8;
 }
 
 // Homepage
@@ -173,5 +184,25 @@ a:hover {
 // Forms
 .hidden {
     display: none;
-  
+}
+
+.btn-primary {
+  background-color: #837d62;
+  border: none;
+}
+
+.btn-primary:hover {
+  background:  linear-gradient(90deg, rgba(240,78,62,1) 33%, rgba(252,202,100,1) 51%, rgba(67,173,165,1) 79%);
+  color: #fffcef;
+}
+
+// Details page
+
+.card-header {
+  background: #fffcef;
+  font-weight: 300;
+}
+
+.card {
+  background: #fff5c8;
 }
