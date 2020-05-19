@@ -1,4 +1,4 @@
-<h1 class="text-center"> Add a new work </h1>
+<h1 class="text-center form-header-gradient"> Add a new work </h1>
 <div class="d-flex flex-column">
       <div id="page-content">
         <div class="container">
@@ -15,7 +15,7 @@
                 <% end %>
 
                 <%= form_with model: @work, class: 'create-work' do |f| %>
-                  <p>Please provide the following information to create a work:</p>
+                  <p class="text-center">Please provide the following information to create a work:</p>
 
                   <div class = "form-group">
                   <%= f.label :category%>
@@ -39,7 +39,7 @@
 
                   <div class = "form-group">
                   <%= f.label :description, class: "hidden" %>
-                  <%= f.text_field :description, placeholder: "Description", class: 'form-control' %>
+                  <%= f.text_area :description, placeholder: "Description", class: 'form-control' %>
                   </div>
 
 

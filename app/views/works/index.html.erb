@@ -17,7 +17,7 @@
               <% @albums.each do |album| %>
                 <tr>
                   <td><%= "DNE" %></td>
-                  <td><%= album.title %></td>
+                  <td><%= link_to album.title, work_path(album.id), class: "album" %></td>
                   <td><%= album.creator %></td>
                   <td><%= album.publication_year %></td>
                   <td><%= "DNE" %></td>
@@ -43,7 +43,7 @@
               <% @books.each do |book| %>
                 <tr>
                   <td><%= "DNE" %></td>
-                  <td><%= book.title %></td>
+                  <td><%= link_to book.title, work_path(book.id), class: "book" %></td>
                   <td><%= book.creator %></td>
                   <td><%= book.publication_year %></td>
                   <td><%= "DNE" %></td>
@@ -69,7 +69,7 @@
               <% @movies.each do |movie| %>
                 <tr>
                   <td><%= "DNE" %></td>
-                  <td><%= movie.title %></td>
+                  <td><%= link_to movie.title, work_path(movie.id), class: "movie" %></td>
                   <td><%= movie.creator %></td>
                   <td><%= movie.publication_year %></td>
                   <td><%= "DNE" %></td>
