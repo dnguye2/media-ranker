@@ -96,16 +96,23 @@ describe Work do
 
   # Top Ten
   describe "top ten method" do
-    it "can get a list of works and they are all in the same category" do
-      
+    it "can get a list of 10 works and they are all in the same category" do
+      album_list = Work.top_ten("album")
+      expect(album_list.length).must_equal 10
+
+      album_list.each do |album|
+        expect(album.category).must_equal "album"
+      end
     end
 
     it "will return nil if there are no works" do
-      
+      book_list = Work.top_ten("book")
+      expect(book_list).must_equal nil
     end
 
     it "will return the same amount of items as the amount of works if the total amount of works is less than 10" do
-      
+      movie_list = Work.top_ten("movie")
+      expect(movie_list.length).must_equal 3
     end
   end
 end

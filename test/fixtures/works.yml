@@ -1,4 +1,3 @@
-# Albums
 banks:
   title: "The Altar" 
   creator: "BANKS"
@@ -53,7 +52,18 @@ foster_the_people:
   category: "album"
   publication_year: "2011"
   description: "The L.A. trio's debut album which is catchy, electro-lite dance-pop that fits nicely next to such contemporaries as MGMT and Phoenix."
-  
+arctic_monkeys:
+  title: "AM"
+  creator: "Arctic Monkeys"
+  category: "album"
+  publication_year: "2013"
+  description: "Alex Turner describes the album as sounding 'like a Dr. Dre beat, but we've given it an Ike Turner bowl-cut and sent it galloping across the desert on a Stratocaster', adding that it 'sound less like four lads playing in a room this time'."
+bea_miller:
+  title: "aurora"
+  creator: "Bea Miller"
+  category: "album"
+  publication_year: "2018"
+  description: "Bea Miller's sophomore album."
 # Movies
 sharrock: 
   title: "Me Before You,Thea Sharrock"
