@@ -4,6 +4,6 @@ class Vote < ApplicationRecord
   validates :work_id, presence: true
 
   # Relationships
-  belongs_to :user
-  belongs_to :work
+  belongs_to :user, counter_cache: true
+  belongs_to :work, counter_cache: true
 end
