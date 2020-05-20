@@ -1,0 +1,11 @@
+<section class="top-ten__list-container">
+          <h2 class="<%= top_collection.first.category %> top-ten__header"><%= "Top #{top_collection.first.category}s" %></h2>
+              <ul class="list-group list-group-flush">
+                <% top_collection.each do |work| %>
+                  <li class="list-group-item">
+                    <h4><%= link_to work.title, work_path(work.id), :class => work.category %><small> by <%= work.creator %> </small></h4>
+                    <p> <%= work.votes_count %> votes</p>
+                  </li>
+                <% end %>
+              </ul>
+</section>
