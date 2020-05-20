@@ -20,4 +20,9 @@ class Work < ApplicationRecord
     top_ten_list = Work.where(category: category).order("votes_count DESC").limit(10)
     return top_ten_list
   end
+
+  def self.sorted_media(category)
+    sorted_collection = Work.where(category: category).order("votes_count DESC")
+    return sorted_collection
+  end
 end
