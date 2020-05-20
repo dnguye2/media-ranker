@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  before_action :require_login, only: [:create]
+
   def create
     @current_user = User.find_by(id: session[:user_id])
     user_id = @current_user.id
