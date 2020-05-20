@@ -28,7 +28,24 @@ class Work < ApplicationRecord
   def self.top_ten(category)
     work = Work.all
     category_collection = work.where(category: category)
-    top_ten = category_collection.sample(10)
+
+    # count votes for each work
+    # get top ten voted works
+    # sort descending
+
+    works_hash = {}
+
+    category_collection.each do |work|
+      works_hash[work.id] = work.votes.count
+    end
+    
+    # get top maximum ten values off of hash
+    # source: https://stackoverflow.com/questions/24044646/how-to-pick-top-5-values-from-a-hash
+    top_ten_ids = works_hash.sort_by { |_, v| -v }.first(10).map(&:first)
+
+    top_ten = top_ten_ids.map do |id|
+      Work.find_by(id: id)
+    end
 
     if top_ten.empty?
       return nil
