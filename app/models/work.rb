@@ -8,45 +8,16 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
   # Relationships
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :users, :through => :votes
 
   # Methods
   def self.spotlight
-    works = Work.all
-
-    works_hash = {}
-
-    works.each do |work|
-      works_hash[work.id] = work.votes.count
-    end
-
-    spotlight_id = works_hash.key(works_hash.values.max)
-    spotlight_media = Work.find_by(id: spotlight_id)
+    spotlight_media = Work.order("votes_count DESC").first
   end
 
   def self.top_ten(category)
-    work = Work.all
-    category_collection = work.where(category: category)
-
-    if category_collection.nil?
-      return nil
-    end
-
-    works_hash = {}
-
-    category_collection.each do |work|
-      works_hash[work.id] = work.votes.count
-    end
-    
-    # Getting top maximum ten values off of hash
-    # source: https://stackoverflow.com/questions/24044646/how-to-pick-top-5-values-from-a-hash
-    top_ten_ids = works_hash.sort_by { |_, v| -v }.first(10).map(&:first)
-
-    top_ten = top_ten_ids.map do |id|
-      Work.find_by(id: id)
-    end
-
-    return top_ten
+    top_ten_list = Work.where(category: category).order("votes_count DESC").limit(10)
+    return top_ten_list
   end
 end
