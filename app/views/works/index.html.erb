@@ -20,7 +20,7 @@
                   <td><%= link_to album.title, work_path(album.id), class: "album" %></td>
                   <td><%= album.creator %></td>
                   <td><%= album.publication_year %></td>
-                  <td><%= button_to "Upvote", votes_path(work_id: album.id), method: :post, :class => "btn btn-outline-dark" %></td>
+                  <td><%= button_to "Upvote", votes_path(work_id: album.id), method: :post, :class => "btn btn-outline-dark"%></td>
                 </tr>
             <% end %>
             </tbody>
@@ -46,8 +46,7 @@
                   <td><%= link_to book.title, work_path(book.id), class: "book" %></td>
                   <td><%= book.creator %></td>
                   <td><%= book.publication_year %></td>
-                  <td><%= "DNE" %></td>
-                </tr>
+                  <td><%= button_to "Upvote", votes_path(work_id: book.id), method: :post, :class => "btn btn-outline-dark" %></td>                  </tr>
             <% end %>
             </tbody>
           </table>
@@ -72,8 +71,7 @@
                   <td><%= link_to movie.title, work_path(movie.id), class: "movie" %></td>
                   <td><%= movie.creator %></td>
                   <td><%= movie.publication_year %></td>
-                  <td><%= "DNE" %></td>
-                </tr>
+                  <td><%= button_to "Upvote", votes_path(work_id: movie.id), method: :post, :class => "btn btn-outline-dark" %></td>                </tr>
             <% end %>
             </tbody>
           </table>
