@@ -20,7 +20,7 @@
                   <td><%= link_to album.title, work_path(album.id), class: "album" %></td>
                   <td><%= album.creator %></td>
                   <td><%= album.publication_year %></td>
-                  <td><%= "DNE" %></td>
+                  <td><%= button_to "Upvote", votes_path(work_id: album.id), method: :post, :class => "btn btn-outline-dark" %></td>
                 </tr>
             <% end %>
             </tbody>
@@ -84,6 +84,6 @@
   <% end %>
  
  <section>
-  <%= button_to "View Top Media", root_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;'}%>
-  <%= button_to "Add a New Work", new_work_path, method: :get, :class => " btn btn-outline-dark", form: {style: 'display:inline-block;' }%>
+  <%= button_to "View Top Media", root_path, method: :get, :class => "btn btn-outline-dark", form: {style: 'display:inline-block;'}%>
+  <%= button_to "Add a New Work", new_work_path, method: :get, :class => "btn btn-outline-dark", form: {style: 'display:inline-block;' }%>
 </section>
