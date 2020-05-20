@@ -7,6 +7,10 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
 
+  # Relationships
+  has_many :votes
+  has_many :users, :through => :votes
+
   # Methods
   def self.spotlight
     work = Work.all
