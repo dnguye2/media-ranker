@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :update, :edit, :destroy]
+
   def index
     @works = Work.all
     @albums = Work.sorted_media("album")
@@ -7,8 +9,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
     if @work.nil?
       head :not_found
       return
@@ -32,8 +32,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
@@ -47,9 +45,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       redirect_to works_path(@work)
       return
@@ -57,9 +52,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       redirect_to works_path
       return
@@ -73,6 +65,9 @@ class WorksController < ApplicationController
 
 
   private
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
