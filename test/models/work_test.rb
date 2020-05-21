@@ -12,7 +12,7 @@ describe Work do
       )
   }
   
-  it "can be instantiated" do
+  it "is valid when all fields are present" do
     expect(new_work.valid?).must_equal true
   end
 
@@ -25,14 +25,26 @@ describe Work do
     end
   end
 
-  it "has a counter cache" do
-    work_with_no_votes = works(:leon)
-    vote = Vote.create(user_id: users(:rosalind).id, work_id: work_with_no_votes.id)
-    work_with_no_votes.reload
 
-    expect(work_with_no_votes.votes_count).must_equal 1
-    
+  # Counter Cache
+  describe "counter cache" do
+    before do
+      @work_with_no_votes = works(:leon)
+    end
+
+    it "has a default value of 0" do
+      assert_equal(0, @work_with_no_votes.votes_count)
+    end
+
+    it "changes count when upvotes are added" do 
+      expect {
+        perform_upvote(users(:schrodinger), works(:leon))
+        perform_upvote(users(:einstein), works(:leon))
+        perform_upvote(users(:pavlov), works(:leon))
+      }.must_differ '@work_with_no_votes.votes_count', 3
+    end
   end
+
 
   # Relationships
   describe "relationships" do
