@@ -25,5 +25,6 @@ class ActiveSupport::TestCase
     vote = Vote.new(user_id: user.id, work_id: work.id)
     vote.save
     work.reload
+    user.reload
   end
 end
