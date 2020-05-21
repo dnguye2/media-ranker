@@ -19,7 +19,7 @@
               <td><%= link_to work.title, work_path(work.id), class: work.category %></td>
               <td><%= work.creator %></td>
               <td><%= work.publication_year %></td>
-              <td><%= button_to "Upvote", votes_path(work_id: work.id), method: :post, :class => "btn btn-outline-dark"%></td>
+              <td><%= button_to "Upvote", votes_path(work_id: work.id), method: :post, :class => "btn btn-custom-upvote"%></td>
             </tr>
         <% end %>
         </tbody>

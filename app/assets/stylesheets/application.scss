@@ -34,7 +34,7 @@ body {
 
   font-family: 'Exo 2', sans-serif;
 
-  color:  #837d62;
+  color:  #47656b;
 }
 
 h1, h2, h3 {
@@ -73,6 +73,11 @@ h6 {
   font-weight: 800;
 }
 
+.user, .user a {
+  color: #de741d;
+  font-weight: 800;
+}
+
 .list-group-item {
   background: #fffcef;
 }
@@ -83,13 +88,13 @@ h6 {
 }
 
 a:hover {
-  color:  #837d62;
+  color:  #47656b;
   text-decoration: none;
 }
 
 // Header
 .header-custom {
-  color:  #837d62;
+  color:  #47656b;
   background-color: #fff5c8;
   max-width: 100%;
   padding: 2rem 1rem 0.5rem 1rem;
@@ -99,19 +104,17 @@ a:hover {
 }
 
 .header-custom a {
-  color:  #837d62;
+  color:  #47656b;
 }
 
 .header-custom a:hover {
-  color:  #837d62;
+  color:  #47656b;
   text-decoration: none;
 }
 
 .header-logo__gradient{
   font-size: 50px;
-  background: linear-gradient(90deg, rgba(240,78,62,1) 27%, rgba(252,202,100,1) 68%, rgba(67,173,165,1) 79%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #47656b;
 }
 
 // Navbar
@@ -121,21 +124,21 @@ a:hover {
 
 .navbar-logo, .navbar-custom a {
   font-size: large;
-  color:  #837d62;
+  color:  #47656b;
 }
 
 .navbar-custom {
   text-transform: uppercase;
   background-color: #fff5c8;
-  color: #d5cba1;
+  color: #94b1b8;
 }
 
 .navbar-custom a {
-  color: #d5cba1;
+  color: #94b1b8;
 }
 
 .navbar-custom a:hover {
-  color: #837d62;
+  color: #47656b;
 }
 
 .navbar .navbar-nav > li > a {
@@ -144,11 +147,11 @@ a:hover {
 
 // Table
 .table-custom {
-  color:  #837d62;
+  color:  #47656b;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-  background-color: #fff5c8;
+  background-color: #fff6cc;
 }
 
 // Homepage
@@ -191,13 +194,25 @@ a:hover {
     display: none;
 }
 
-.btn-primary {
-  background-color: #837d62;
-  border: none;
+.btn-custom-outline {
+  background: none;
+  border: 1px solid;
+  border-color: #47656b;
+  color: #47656b;
 }
 
-.btn-primary:hover {
-  background:  linear-gradient(90deg, rgba(240,78,62,1) 33%, rgba(252,202,100,1) 51%, rgba(67,173,165,1) 79%);
+.btn-custom-outline:hover {
+  background-color: #47656b;
+  color: #fffcef;
+}
+
+.btn-custom-upvote {
+  background-color: #47656b;
+  color: #fffcef;
+}
+
+.btn-custom-upvote:hover {
+  background-color: #28383b;
   color: #fffcef;
 }
 
