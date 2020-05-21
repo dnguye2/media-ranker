@@ -40,9 +40,8 @@ describe Work do
       @work_with_no_votes = works(:leon)
       @work_with_votes = works(:tame_impala)
 
-      vote = Vote.create(user_id: users(:rosalind).id, work_id: @work_with_votes.id)
-      vote = Vote.create(user_id: users(:schrodinger).id, work_id: @work_with_votes.id)
-      @work_with_votes.reload
+      perform_upvote(users(:rosalind), @work_with_votes)
+      perform_upvote(users(:schrodinger), @work_with_votes)
     end
 
     describe "between work and vote models" do
@@ -141,14 +140,12 @@ describe Work do
   describe "spotlight method" do
     before do
       # set one work to have highest amount of votes
-      @spotlight_work = works(:banks)
+      @spotlight_work = works(:mahalia)
 
       users = User.all
 
       users.each do |user|
-        vote = Vote.new(user_id: user.id, work_id: @spotlight_work.id)
-        vote.save
-        @spotlight_work.reload
+        perform_upvote(user, @spotlight_work)
       end
     end
 
@@ -178,6 +175,43 @@ describe Work do
 
   # Top Ten
   describe "top ten method" do
+    before do
+      # Albums
+      @top_ten_albums_test = [
+        works(:banks), 
+        works(:lemaitre), 
+        works(:ariana_grande), 
+        works(:arctic_monkeys),
+        works(:mahalia),
+        works(:lianne_la_havas),
+        works(:tame_impala),
+        works(:leon),
+        works(:the_strokes),
+        works(:foster_the_people)
+        ]
+
+      number_of_upvotes = 20
+
+      @top_ten_albums_test.each do |work|
+        number_of_upvotes.times do
+          perform_upvote(users(:einstein), work)
+        end
+        number_of_upvotes -= 2
+      end
+
+      # Movies
+      @top_three_movies_test = [
+        works(:interstellar),
+        works(:pride_and_prejudice),
+        works(:zoolander)
+      ]
+    end
+
+    it "gets the correct top ten works for a category" do
+      album_list = Work.top_ten("album")
+      assert_equal(@top_ten_albums_test, album_list)
+    end
+
     it "can get a list of 10 works and they are all in the same category" do
       album_list = Work.top_ten("album")
       expect(album_list.length).must_equal 10
@@ -187,8 +221,9 @@ describe Work do
       end
     end
 
-    it "gets the correct top ten works for a category" do
-      
+    it "deals with tiebreaks by sorting alphabetically" do
+      movie_list = Work.top_ten("movie")
+      assert_equal(@top_three_movies_test, movie_list)
     end
 
     it "will return nil if there are no works" do
