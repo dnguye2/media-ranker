@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe Work do
+  # Instantiation
   let (:new_work) {
     Work.new(
       title: "The Altar", 
@@ -21,6 +22,71 @@ describe Work do
 
     [:title, :category, :publication_year, :creator, :description]. each do |field|
       expect(work).must_respond_to field
+    end
+  end
+
+  # Relationships
+  describe "relationships" do
+    describe "between work and vote models" do
+        it "has a vote instance even when no votes are added" do
+          work = works(:leon)
+          assert_not_nil(work.votes)
+        end
+    
+        it "has a vote when a vote is added" do
+          work = works(:tame_impala)
+          vote = Vote.new(user_id: users(:rosalind).id, work_id: work.id)
+          vote.save
+    
+          expect(work.votes.count).must_equal 1
+        end
+    
+        it "can have many votes" do
+          work = works(:tame_impala)
+    
+          users = User.all
+    
+          users.each do |user|
+            vote = Vote.new(user_id: user.id, work_id: work.id)
+            vote.save
+          end
+    
+          expect(work.votes.count).must_be :>, 1
+          work.votes.each do |vote|
+            expect(vote).must_be_instance_of Vote
+          end
+      end
+    end
+    
+    describe "between work and user models" do
+      it "has a user instance even when no votes are added" do
+        work = works(:the_strokes)
+        assert_not_nil(work.users)
+      end
+
+      it "has a user when a vote is added" do
+        work = works(:tame_impala)
+        vote = Vote.new(user_id: users(:rosalind).id, work_id: work.id)
+        vote.save
+  
+        expect(work.users.count).must_equal 1
+      end
+
+      it "can have many users" do
+        work = works(:tame_impala)
+  
+        users = User.all
+  
+        users.each do |user|
+          vote = Vote.new(user_id: user.id, work_id: work.id)
+          vote.save
+        end
+  
+        expect(work.users.count).must_be :>, 1
+        work.users.each do |user|
+          expect(user).must_be_instance_of User
+        end
+      end
     end
   end
 
@@ -100,10 +166,8 @@ describe Work do
       works.each do |work|
         work.destroy
       end
-
-      work_spotlight = Work.spotlight()
       
-      expect(work_spotlight).must_equal nil
+      expect(Work.spotlight).must_equal nil
 
     end
   end
@@ -120,12 +184,8 @@ describe Work do
     end
 
     it "will return nil if there are no works" do
-      works = Work.all
-
       # Make local Work database empty
-      works.each do |work|
-        work.destroy
-      end
+      Work.destroy_all
 
       album_list = Work.top_ten("album")
       expect(album_list).must_equal nil
