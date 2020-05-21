@@ -1,0 +1,53 @@
+<div class="d-flex flex-column">
+  <div id="page-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <%# Work Details Info Card %>
+          <div class="card">
+            <div class="card-header">
+              <h2> User Summary: <span class="user"><%= @user.username %></span></h2>
+            </div>
+              <div class="card-body"> 
+                <h6 class="card-title">Joined site <%= @user.created_at.strftime("%B %d, %Y") %> </h6>
+              </div>
+          </div>  
+          <section class="works-votes__container">
+          <%# Table %>
+          <h3>Votes</h3>
+                  <table class="table table-striped table-sm table-custom" cellspacing="0" width="100%">
+                        <thead>
+                          <tr>
+                            <th scope="col", class="th-sm">Media Title</th>
+                            <th scope="col", class="th-sm">Created By</th>
+                            <th scope="col", class="th-sm">Published</th>
+                            <th scope="col", class="th-sm">Category</th>
+                            <th scope="col", class="th-sm">Voted On</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <% @user.votes.each do |vote| %>
+                            <tr>
+                              <% work = Work.find_by(id: vote.work_id) %>
+                              <td class="pl-2"><%= link_to work.title, work_path(work), method: :get, :class => work.category %></td>
+                              <td><%= work.creator %></td>
+                              <td><%= work.publication_year  %></td>
+                              <td class="text-capitalize"><%= work.category %></td>
+                              <td><%= vote.created_at.strftime("%B %d, %Y") %></td>
+                            </tr>
+                          <% end %>
+                        </tbody>
+                    </table>
+          </section>
+
+          <%# Buttons %>
+          <section>
+            <%= button_to "See all Users", root_path, :class => " btn btn-custom-outline", form: {style: 'display:inline-block;' }%>
+            <%= button_to "Back to media ranks", root_path, method: :get, :class => " btn btn-custom-outline", form: {style: 'display:inline-block;'}%>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
