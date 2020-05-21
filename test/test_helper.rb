@@ -18,4 +18,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+
+  # test_helper that adds a vote to a work
+  def perform_upvote(user, work)
+    vote = Vote.new(user_id: user.id, work_id: work.id)
+    vote.save
+    work.reload
+  end
 end
