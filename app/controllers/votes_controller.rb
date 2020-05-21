@@ -23,10 +23,7 @@ class VotesController < ApplicationController
       redirect_to works_path
       return
     end
-
   end
-
-
 
 
   private
