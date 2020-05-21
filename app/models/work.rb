@@ -19,12 +19,13 @@ class Work < ApplicationRecord
   def self.top_ten(category)
     return nil if (Work.all).empty?
 
-    top_ten_list = Work.where(category: category).order("votes_count DESC").limit(10)
+    top_ten_list = Work.where(category: category).sort_by{|work| [-work.votes_count, work.title]}.first(10)
     return top_ten_list
   end
 
   def self.sorted_media(category)
-    sorted_collection = Work.where(category: category).order("votes_count DESC")
+    sorted_collection = Work.where(category: category).sort_by{|work| [-work.votes_count, work.title]}
+
     return sorted_collection
   end
 end
