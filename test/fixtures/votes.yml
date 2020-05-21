@@ -1,0 +1,8 @@
+tame_impala_vote_1:
+  user_id: <%= User.find_by_username('rfranklin').id %>
+  work_id: <%= Work.find_by_title('The Slow Rush').id %>
+tame_impala_vote_2:
+  user_id: <%= User.find_by_username('schrodinger').id %>
+  work_id: <%= Work.find_by_title('The Slow Rush').id %>
+
+  

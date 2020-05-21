@@ -27,32 +27,23 @@ describe Work do
 
   # Relationships
   describe "relationships" do
+    before do
+      @work_with_no_votes = works(:leon)
+      @work_with_votes = works(:tame_impala)
+    end
+
     describe "between work and vote models" do
         it "has a vote instance even when no votes are added" do
-          work = works(:leon)
-          assert_not_nil(work.votes)
+          assert_not_nil(@work_with_no_votes.votes)
         end
     
-        it "has a vote when a vote is added" do
-          work = works(:tame_impala)
-          vote = Vote.new(user_id: users(:rosalind).id, work_id: work.id)
-          vote.save
-    
-          expect(work.votes.count).must_equal 1
+        it "has a vote when votes are added" do
+          expect(@work_with_votes.votes.count).must_equal 2
         end
     
         it "can have many votes" do
-          work = works(:tame_impala)
-    
-          users = User.all
-    
-          users.each do |user|
-            vote = Vote.new(user_id: user.id, work_id: work.id)
-            vote.save
-          end
-    
-          expect(work.votes.count).must_be :>, 1
-          work.votes.each do |vote|
+          expect(@work_with_votes.votes.count).must_be :>, 1
+          @work_with_votes.votes.each do |vote|
             expect(vote).must_be_instance_of Vote
           end
       end
@@ -60,30 +51,16 @@ describe Work do
     
     describe "between work and user models" do
       it "has a user instance even when no votes are added" do
-        work = works(:the_strokes)
-        assert_not_nil(work.users)
+        assert_not_nil(@work_with_no_votes.users)
       end
 
       it "has a user when a vote is added" do
-        work = works(:tame_impala)
-        vote = Vote.new(user_id: users(:rosalind).id, work_id: work.id)
-        vote.save
-  
-        expect(work.users.count).must_equal 1
+        expect(@work_with_votes.users.count).must_equal 2
       end
 
       it "can have many users" do
-        work = works(:tame_impala)
-  
-        users = User.all
-  
-        users.each do |user|
-          vote = Vote.new(user_id: user.id, work_id: work.id)
-          vote.save
-        end
-  
-        expect(work.users.count).must_be :>, 1
-        work.users.each do |user|
+        expect(@work_with_votes.users.count).must_be :>, 1
+        @work_with_votes.users.each do |user|
           expect(user).must_be_instance_of User
         end
       end
@@ -159,16 +136,15 @@ describe Work do
       end
     end
 
-    it "returns nil if there are no works" do
-      works = Work.all
-
-      # Make local Work database empty
-      works.each do |work|
-        work.destroy
-      end
+    it "gets the work with the highest number of votes" do
       
-      expect(Work.spotlight).must_equal nil
+    end
 
+    it "returns nil if there are no works" do
+      # Make local Work database empty
+      Work.destroy_all
+      
+      assert_nil(Work.spotlight)
     end
   end
 
@@ -183,12 +159,15 @@ describe Work do
       end
     end
 
+    it "gets the correct top ten works for a category" do
+      
+    end
+
     it "will return nil if there are no works" do
       # Make local Work database empty
       Work.destroy_all
 
-      album_list = Work.top_ten("album")
-      expect(album_list).must_equal nil
+      assert_nil(Work.top_ten("album"))
     end
 
     it "will return the same amount of items as the amount of works if the total amount of works is less than 10" do
