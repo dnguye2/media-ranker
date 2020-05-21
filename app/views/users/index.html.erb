@@ -1,0 +1,23 @@
+<section class="media-table">
+    <table class="table table-striped table-sm table-custom" cellspacing="0" width="100%">
+      <h2 class="user">List of users</h2>
+
+        <thead>
+          <tr>
+            <th scope="col", class="th-sm">Username</th>
+            <th scope="col", class="th-sm">Votes</th>
+            <th scope="col", class="th-sm">Joined</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= link_to user.username, work_path(user), class: "user" %></td>
+              <td class="pl-3"><%= user.votes_count %></td>
+              <td><%= user.created_at.strftime("%B %d, %Y") %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</section>
