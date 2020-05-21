@@ -10,7 +10,8 @@ class WorksController < ApplicationController
 
   def show
     if @work.nil?
-      head :not_found
+      flash[:error] = "Work has either been deleted or not found."
+      redirect_to root_path
       return
     end
   end
