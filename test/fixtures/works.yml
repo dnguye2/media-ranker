@@ -65,20 +65,20 @@ bea_miller:
   publication_year: "2018"
   description: "Bea Miller's sophomore album."
 # Movies
-sharrock: 
-  title: "Me Before You,Thea Sharrock"
+pride_and_prejudice: 
+  title: "Pride and Prejudice"
   creator: "Thea Sharrock"
   category: "movie"
   publication_year: "2016"
   description: "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of."
-finest: 
-  title: "Their Finest"
+zoolander: 
+  title: "Zoolander"
   creator: "Lone Scherfig"
   category: "movie"
   publication_year: "2016"
   description: "A former secretary, newly appointed as a scriptwriter for propaganda films, joins the cast and crew of a major production while the Blitz rages around them."
-batman:
-  title: "The Dark Knight"
+interstellar:
+  title: "Interstellar"
   creator: "Christopher Nolan"
   category: "movie"
   publication_year: "2008"
