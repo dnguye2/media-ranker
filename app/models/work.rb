@@ -13,10 +13,12 @@ class Work < ApplicationRecord
 
   # Methods
   def self.spotlight
-    spotlight_media = Work.order("votes_count DESC").first
+    return spotlight_media = Work.order("votes_count DESC").first
   end
 
   def self.top_ten(category)
+    return nil if (Work.all).empty?
+
     top_ten_list = Work.where(category: category).order("votes_count DESC").limit(10)
     return top_ten_list
   end
