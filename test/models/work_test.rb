@@ -25,11 +25,24 @@ describe Work do
     end
   end
 
+  it "has a counter cache" do
+    work_with_no_votes = works(:leon)
+    vote = Vote.create(user_id: users(:rosalind).id, work_id: work_with_no_votes.id)
+    work_with_no_votes.reload
+
+    expect(work_with_no_votes.votes_count).must_equal 1
+    
+  end
+
   # Relationships
   describe "relationships" do
     before do
       @work_with_no_votes = works(:leon)
       @work_with_votes = works(:tame_impala)
+
+      vote = Vote.create(user_id: users(:rosalind).id, work_id: @work_with_votes.id)
+      vote = Vote.create(user_id: users(:schrodinger).id, work_id: @work_with_votes.id)
+      @work_with_votes.reload
     end
 
     describe "between work and vote models" do
@@ -37,12 +50,12 @@ describe Work do
           assert_not_nil(@work_with_no_votes.votes)
         end
     
-        it "has a vote when votes are added" do
-          expect(@work_with_votes.votes.count).must_equal 2
+        it "has votes when votes are added" do
+          expect(@work_with_votes.votes_count).must_equal 2
         end
     
         it "can have many votes" do
-          expect(@work_with_votes.votes.count).must_be :>, 1
+          expect(@work_with_votes.votes_count).must_be :>, 1
           @work_with_votes.votes.each do |vote|
             expect(vote).must_be_instance_of Vote
           end
@@ -126,8 +139,21 @@ describe Work do
 
   # Spotlight
   describe "spotlight method" do
+    before do
+      # set one work to have highest amount of votes
+      @spotlight_work = works(:banks)
+
+      users = User.all
+
+      users.each do |user|
+        vote = Vote.new(user_id: user.id, work_id: @spotlight_work.id)
+        vote.save
+        @spotlight_work.reload
+      end
+    end
+
     it "can get a work" do
-      work = Work.spotlight()
+      work = Work.spotlight
    
       assert_instance_of(Work, work)
 
@@ -137,7 +163,9 @@ describe Work do
     end
 
     it "gets the work with the highest number of votes" do
-      
+      works = Work.all
+
+      expect(Work.spotlight).must_equal @spotlight_work
     end
 
     it "returns nil if there are no works" do
