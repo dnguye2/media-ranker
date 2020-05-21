@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :works
 
   # Users
+  resources :users, only: [:show]
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
