@@ -5,7 +5,6 @@ class VotesController < ApplicationController
     @current_user = User.find_by(id: session[:user_id])
     user_id = @current_user.id
 
-    
     vote = Vote.new(user_id: user_id, work_id: params[:work_id])
 
     if Vote.where(user_id: @current_user.id, work_id: params[:work_id]).any?
@@ -24,7 +23,6 @@ class VotesController < ApplicationController
       return
     end
   end
-
 
   private
   def vote_params

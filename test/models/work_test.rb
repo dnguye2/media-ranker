@@ -25,7 +25,6 @@ describe Work do
     end
   end
 
-
   # Counter Cache
   describe "counter cache" do
     before do
@@ -44,7 +43,6 @@ describe Work do
       }.must_differ '@work_with_no_votes.votes_count', 3
     end
   end
-
 
   # Relationships
   describe "relationships" do
@@ -251,46 +249,46 @@ describe Work do
     end
   end
 
-    # Sorted Media Method
-    describe "sorted media method" do
-      before do
-        @movies_list = [
-          works(:zoolander),
-          works(:interstellar),
-          works(:pride_and_prejudice)
-        ]
+  # Sorted Media Method
+  describe "sorted media method" do
+    before do
+      @movies_list = [
+        works(:zoolander),
+        works(:interstellar),
+        works(:pride_and_prejudice)
+      ]
 
-        perform_upvote(users(:einstein), works(:zoolander))
-      end
+      perform_upvote(users(:einstein), works(:zoolander))
+    end
 
-      it "will return nil if there are no works" do
-        # Make local Work database empty
-        Work.destroy_all
-  
-        assert_nil(Work.sorted_media("album"))
-      end
+    it "will return nil if there are no works" do
+      # Make local Work database empty
+      Work.destroy_all
 
-      it "gets the same category for the list of works" do
-        album_list = Work.sorted_media("album")
+      assert_nil(Work.sorted_media("album"))
+    end
 
-        album_list.each do |album|
-          expect(album.category).must_equal "album"
-        end
-      end
+    it "gets the same category for the list of works" do
+      album_list = Work.sorted_media("album")
 
-      it "provides a list sorted by votes in descending order" do
-        2.times do
-          perform_upvote(users(:einstein), works(:interstellar))
-        end
-
-        expected_sorted_list = [works(:interstellar),  works(:zoolander), works(:pride_and_prejudice)]
-
-        expect(Work.sorted_media("movie")).must_equal expected_sorted_list
-      end
-
-      it "deals with tiebreaks by sorting alphabetically" do
-        movie_list = Work.sorted_media("movie")
-        assert_equal(@movies_list, movie_list)
+      album_list.each do |album|
+        expect(album.category).must_equal "album"
       end
     end
+
+    it "provides a list sorted by votes in descending order" do
+      2.times do
+        perform_upvote(users(:einstein), works(:interstellar))
+      end
+
+      expected_sorted_list = [works(:interstellar),  works(:zoolander), works(:pride_and_prejudice)]
+
+      expect(Work.sorted_media("movie")).must_equal expected_sorted_list
+    end
+
+    it "deals with tiebreaks by sorting alphabetically" do
+      movie_list = Work.sorted_media("movie")
+      assert_equal(@movies_list, movie_list)
+    end
+  end
 end
