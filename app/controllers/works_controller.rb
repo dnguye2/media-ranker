@@ -1,14 +1,26 @@
 class WorksController < ApplicationController
   def index
+    @works = Work.all
+    @movies = Work.where(category: "movie")
+    @albums = Work.where(category: "album")
+    @books = Work.where(category: "book")
   end
 
   def show
   end
 
   def new
+    @work = Work.new
   end
 
   def create
+    @work = Work.new(work_params)
+    if @work.id?
+      redirect_to root_path
+    else
+      render :new
+      return
+    end
   end
 
   def update
